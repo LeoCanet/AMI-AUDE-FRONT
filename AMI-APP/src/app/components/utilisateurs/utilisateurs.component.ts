@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UtilisateursService } from 'src/app/services/utilisateurs.service';
+import { UtilisateursService } from 'src/app/services/utilisateurs/utilisateurs.service';
 
 @Component({
   selector: 'app-utilisateurs',

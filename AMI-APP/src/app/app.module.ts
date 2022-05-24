@@ -4,22 +4,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UtilisateursComponent } from './components/utilisateurs/utilisateurs.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { AddUsersComponent } from './components/add-users/add-users.component';
 import { UsersDetailsComponent } from './components/users-details/users-details.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UtilisateursAddComponent } from './components/utilisateurs-add/utilisateurs-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UtilisateursComponent,
-    AddUsersComponent,
     UsersDetailsComponent,
+    UtilisateursAddComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
