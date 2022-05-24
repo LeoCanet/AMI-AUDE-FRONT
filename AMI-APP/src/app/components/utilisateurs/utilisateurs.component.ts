@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UtilisateursService } from 'src/app/services/utilisateurs/utilisateurs.service';
+import { CrudService } from 'src/app/services/crud/crud.service';
 
 @Component({
   selector: 'app-utilisateurs',
@@ -12,22 +12,23 @@ export class UtilisateursComponent implements OnInit {
 
   dataProjects: any;
 
-  constructor(private UtilisateursService: UtilisateursService) { }
+  constructor(private crudService: CrudService) { }
 
   ngOnInit(): void {
-    this.retrieveProjects();
+    this.getAll();
   }
 
-  retrieveProjects(): void {
-    this.UtilisateursService.getAll()
-    .subscribe(
-        data => {
-          this.dataProjects = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
+  getAll(): void {
+    this.crudService.GetUsers()
+    .subscribe({
+      next:(result) => {
+        this.dataProjects = result;
+        console.log(result);
+      },
+      error:(err) => {
+        alert(err);
+      }
+    })
   }
 
 }
