@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { groupBy } from 'rxjs/internal/operators/groupBy';
+import { Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud/crud.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class UtilisateursAddComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private crudService: CrudService
+    private crudService: CrudService,
+    private router: Router
   ) {
     this.usersForm = this.formBuilder.group({
       users: this.formBuilder.array([]),
@@ -23,10 +24,10 @@ export class UtilisateursAddComponent implements OnInit {
 
   initForm() {
     this.usersForm = this.formBuilder.group({
-      nom: [''],
-      prenom: [''],
-      email: [''],
-      dateNaissance: [''],
+      nom: ['', Validators.required],
+      prenom: ['', Validators.required],
+      email: ['', Validators.required],
+      dateNaissance: ['', Validators.required],
     });
   }
 
@@ -45,6 +46,9 @@ export class UtilisateursAddComponent implements OnInit {
           alert('Error while adding the user');
         },
       });
+      this.router.navigate(['/utilisateurs']);
+    }else {
+      alert('Veuillez remplir tous les champs disponibles');
     }
   }
 }
