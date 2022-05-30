@@ -4,6 +4,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/dialog/dialog.component';
+import { DialogDeleteComponent } from 'src/app/dialog-delete/dialog-delete.component';
 
 @Component({
   selector: 'app-utilisateurs',
@@ -26,14 +29,21 @@ export class UtilisateursComponent implements OnInit {
 
   constructor(
     private crudService: CrudService,
-    private dialog: MatDialogModule
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
     this.getAll();
   }
 
+  openDialog() {
+    this.dialog.open(DialogComponent, {
+      width: '40%', 
+    });
+  }
+
   getAll(): void {
+    console.log("coucoucou")
     this.crudService.GetUsers().subscribe({
       next: (data: any) => {
         this.dataSource = new MatTableDataSource(data);
@@ -61,4 +71,20 @@ export class UtilisateursComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  editUser(row: any) {
+    this.dialog.open(DialogComponent, {
+      width: '40%',
+      data: row
+    });
+  }
+
+  deleteUser() {
+    this.dialog.open(DialogDeleteComponent, {
+      width: '40%'
+    });
+  }
+
 }
+
+

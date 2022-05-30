@@ -18,19 +18,19 @@ export class CrudService {
   constructor(private httpClient: HttpClient) {}
   // Create
   AddUser(data: User): Observable<any> {
-    let API_URL = `${this.REST_API}utilisateurs-add`;
+    let API_URL = `${this.REST_API}utilisateurs`;
     return this.httpClient
       .post(API_URL, data)
       .pipe(catchError(this.handleError));
   }
   // Get all users
   GetUsers() {
-    return this.httpClient.get(`${this.REST_API}utilisateurs`);
+    return this.httpClient.get<any>(`${this.REST_API}utilisateurs`);
   }
   // Get single user
   GetUser(id: any): Observable<any> {
     let API_URL = `${this.REST_API}utilisateurs/${id}`;
-    return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
+    return this.httpClient.get<any>(API_URL, { headers: this.httpHeaders }).pipe(
       map((res: any) => {
         return res || {};
       }),

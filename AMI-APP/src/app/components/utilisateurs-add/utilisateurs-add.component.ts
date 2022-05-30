@@ -15,7 +15,7 @@ export class UtilisateursAddComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private crudService: CrudService,
-    private router: Router
+    private router: Router,
   ) {
     this.usersForm = this.formBuilder.group({
       users: this.formBuilder.array([]),
@@ -40,10 +40,10 @@ export class UtilisateursAddComponent implements OnInit {
     if (this.usersForm.valid) {
       this.crudService.AddUser(this.usersForm.value).subscribe({
         next: (res) => {
-          alert('User added successfully');
+          alert("L'utilisateur à été ajouté avec succès!");
         },
         error: () => {
-          alert('Error while adding the user');
+          alert('Une erreur est survenue');
         },
       });
       this.router.navigate(['/utilisateurs']);

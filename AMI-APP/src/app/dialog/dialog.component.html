@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Formulaire de l'utilisateur</h1>
+<form [formGroup]="usersForm">
+	<div mat-dialog-content>
+		<mat-form-field appearance="outline">
+			<mat-label>Nom</mat-label>
+			<input matInput placeholder="Nom" formControlName="nom" required>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Prenom</mat-label>
+			<input matInput placeholder="Prenom" formControlName="prenom" required>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Email</mat-label>
+			<input matInput type="email" placeholder="Email" formControlName="email" required>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Date de naissance</mat-label>
+			<input matInput [matDatepicker]="dp" formControlName="dateNaissance" required>
+			<mat-hint>DD/MM/YYYY</mat-hint>
+			<mat-datepicker-toggle matsuffix [for]="dp"></mat-datepicker-toggle>
+			<mat-datepicker #dp></mat-datepicker>
+		</mat-form-field>
+
+		<div mat-dialog-action [align]="'end'">
+			<button mat-raised-button color="warn" mat-dialog-close>Fermer</button>
+			<button mat-raised-button color="primary" (click)="onSubmit()">{{actionBtn}}</button>
+		</div>
+
+	</div>
+</form>
