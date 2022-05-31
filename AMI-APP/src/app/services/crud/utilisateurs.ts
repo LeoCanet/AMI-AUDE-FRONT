@@ -1,5 +1,5 @@
 export class User {
-    _id!: String;
+    _id!: Number;
     nom!: String;
     prenom!: String;
     email!: String;
