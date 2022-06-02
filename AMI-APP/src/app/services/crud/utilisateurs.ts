@@ -3,6 +3,6 @@ export class User {
     nom!: String;
     prenom!: String;
     email!: String;
-    dateDeNaissance!: String;
+    dateDeNaissance!: Date;
 }
 

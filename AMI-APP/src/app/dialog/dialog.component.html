@@ -16,23 +16,15 @@
 			<input matInput type="email" placeholder="Email" formControlName="email" required>
 		</mat-form-field>
 
-		<mat-form-field class="example-full-width" appearance="outline">
+		<mat-form-field aappearance="outline">
 			<mat-label>Date de naissance</mat-label>
-			<input matInput [matDatepicker]="picker" formControlName="dateNaissance" required (dateInput)="addEvent('input', $event)"
-			(dateChange)="addEvent('change', $event)">
+			<input matInput [matDatepicker]="picker" formControlName="dateNaissance" required>
 			<mat-hint>DD/MM/YYYY</mat-hint>
 			<mat-datepicker-toggle matSuffix [for]="picker">
 				<mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
 			</mat-datepicker-toggle>
 			<mat-datepicker #picker></mat-datepicker>
 		</mat-form-field>
-
-		<ul>
-		<li>Date: {{selDate}}</li>
-		<li>Day: {{selDay}}</li>
-		<li>Month: {{selMonth}}</li>
-		<li>Year: {{selYear}}</li>
-	  	</ul>
 
 		<div mat-dialog-action [align]="'end'">
 			<button mat-raised-button color="warn" mat-dialog-close>Fermer</button>

@@ -5,10 +5,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CrudService } from '../services/crud/crud.service';
 import { UtilisateursComponent } from '../components/utilisateurs/utilisateurs.component';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-
-import * as _moment from 'moment';
-const moment = _moment;
 
 @Component({
   selector: 'app-dialog',
@@ -37,10 +33,10 @@ export class DialogComponent implements OnInit {
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
       email: ['', Validators.required],
-      dateNaissance: ['', Validators.required],
+      dateNaissance: ['']
     });
 
-    // console.log(this.editData)
+  
     if (this.editData) {
       this.actionBtn = 'Mettre à jour';
       this.usersForm.controls['nom'].setValue(this.editData.Nom);
@@ -49,27 +45,12 @@ export class DialogComponent implements OnInit {
       this.usersForm.controls['dateNaissance'].setValue(
         this.editData.Date_de_naissance
       );
+      console.log(this.editData.Date_de_naissance)
     }
   }
 
   ngOnInit() {
     this.initForm();
-  }
-
-  date = moment();
-
-  selDate!: string;
-  selDay!: string;
-  selMonth!: string;
-  selYear!: string;
-
-  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.date = moment(event.value);
-    // this.editData.Date_de_naissance = this.date
-    this.selDate = this.date.format('DD');
-    this.selDay = this.date.format('dddd');
-    this.selMonth = this.date.format('MMMM');
-    this.selYear = this.date.format('YYYY');
   }
 
   onSubmit() {
@@ -79,9 +60,9 @@ export class DialogComponent implements OnInit {
       if (this.usersForm.valid) {
         this.crudService.AddUser(this.usersForm.value).subscribe({
           next: (res) => {
-            alert("L'utilisateur à été ajouté avec succès!");
             this.usersForm.reset();
             this.dialogRef.close('sauvegarder');
+            alert("L'utilisateur à été ajouté avec succès!");
           },
           error: (err) => {
             alert('Une erreur est survenue');
@@ -94,15 +75,14 @@ export class DialogComponent implements OnInit {
   }
 
   updateUser() {
-    console.log('update: _______', this.usersForm.value.dateNaissance._i);
-    // this.usersForm.value.dateNaissance = this.usersForm.value.dateNaissance._i
+    // console.log('update: _______', this.usersForm.value.dateNaissance._d);
     this.crudService
       .updateUser(this.editData.id, this.usersForm.value)
       .subscribe({
         next: (res) => {
-          alert("L'utilisateur à été mise à jour avec succès'");
           this.usersForm.reset();
           this.dialogRef.close('Mettre à jour');
+          alert("L'utilisateur à été mise à jour avec succès'");
         },
         error: () => {
           alert('Une erreur est survenue');

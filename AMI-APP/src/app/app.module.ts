@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UtilisateursComponent } from './components/utilisateurs/utilisateurs.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { UsersDetailsComponent } from './components/users-details/users-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
@@ -29,7 +28,6 @@ const MY_FORMATS = {
   declarations: [
     AppComponent,
     UtilisateursComponent,
-    UsersDetailsComponent,
     DialogComponent,
   ],
   imports: [
