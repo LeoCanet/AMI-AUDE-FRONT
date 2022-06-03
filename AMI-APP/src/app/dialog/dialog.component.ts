@@ -30,22 +30,21 @@ export class DialogComponent implements OnInit {
 
   initForm() {
     this.usersForm = this.formBuilder.group({
-      nom: ['', Validators.required],
-      prenom: ['', Validators.required],
-      email: ['', Validators.required],
-      dateNaissance: ['']
+      Referent_RSA: ['', Validators.required],
+      Date_debut: ['', Validators.required],
+      Date_fin: ['', Validators.required],
+      Usagers: ['', Validators.required],
+      Intitule_Action: ['', Validators.required],
     });
 
   
     if (this.editData) {
       this.actionBtn = 'Mettre à jour';
-      this.usersForm.controls['nom'].setValue(this.editData.Nom);
-      this.usersForm.controls['prenom'].setValue(this.editData.Prenom);
-      this.usersForm.controls['email'].setValue(this.editData.Email);
-      this.usersForm.controls['dateNaissance'].setValue(
-        this.editData.Date_de_naissance
-      );
-      console.log(this.editData.Date_de_naissance)
+      this.usersForm.controls['Referent_RSA'].setValue(this.editData.Referent_RSA);
+      this.usersForm.controls['Date_debut'].setValue(this.editData.Date_debut);
+      this.usersForm.controls['Date_fin'].setValue(this.editData.Date_fin);
+      this.usersForm.controls['Usagers'].setValue(this.editData.Usagers);
+      this.usersForm.controls['Intitule_Action'].setValue(this.editData.Intitule_Action);
     }
   }
 
@@ -75,7 +74,10 @@ export class DialogComponent implements OnInit {
   }
 
   updateUser() {
-    // console.log('update: _______', this.usersForm.value.dateNaissance._d);
+    console.log('update: _______', this.editData.Date_fin);
+    this.editData.Date_fin = this.editData.Date_fin.slice(0, -1);
+    console.log('update: _______', this.editData.Date_fin);
+    console.log('test________', this.usersForm.value)
     this.crudService
       .updateUser(this.editData.id, this.usersForm.value)
       .subscribe({

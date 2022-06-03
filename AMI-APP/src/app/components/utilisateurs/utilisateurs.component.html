@@ -20,28 +20,34 @@
   </ng-container>
 
   <!-- Nom Column -->
-  <ng-container matColumnDef="Nom">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
-    <td mat-cell *matCellDef="let row"> {{row.Nom}} </td>
+  <ng-container matColumnDef="Referent_RSA">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Referent RSA </th>
+    <td mat-cell *matCellDef="let row"> {{row.Referent_RSA}} </td>
   </ng-container>
 
   <!-- Prenom Column -->
-  <ng-container matColumnDef="Prenom">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Prenom </th>
-    <td mat-cell *matCellDef="let row"> {{row.Prenom}} </td>
+  <ng-container matColumnDef="Date_debut">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date début </th>
+    <td mat-cell *matCellDef="let row"> {{row.Date_debut | date: 'dd/MM/yyyy'}} </td>
   </ng-container>
 
-  <!-- Email Column -->
-  <ng-container matColumnDef="Email">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-    <td mat-cell *matCellDef="let row"> {{row.Email}} </td>
+  <!-- Prenom Column -->
+  <ng-container matColumnDef="Date_fin">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date fin </th>
+    <td mat-cell *matCellDef="let row"> {{row.Date_fin | date: 'dd/MM/yyyy'}} </td>
   </ng-container>
 
     <!-- Date_de_naissance Column -->
-    <ng-container matColumnDef="Date_de_naissance">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date_de_naissance </th>
-        <td mat-cell *matCellDef="let row"> {{row.Date_de_naissance}} </td>
+    <ng-container matColumnDef="Usagers">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Usagers </th>
+        <td mat-cell *matCellDef="let row"> {{row.Usagers}} </td>
     </ng-container>
+
+        <!-- Date_de_naissance Column -->
+        <ng-container matColumnDef="Intitule_Action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Intitulé de l'action </th>
+      <td mat-cell *matCellDef="let row"> {{row.Intitule_Action}} </td>
+  </ng-container>
     
         <!-- Date_de_naissance Column -->
     <ng-container matColumnDef="Actions">
@@ -65,7 +71,7 @@
   </tr>
 </table>
 
-<mat-paginator [pageSizeOptions]="[5, 10]" aria-label="page users"></mat-paginator>
+<mat-paginator [pageSizeOptions]="[10]" aria-label="page users"></mat-paginator>
 </div>
 
 </div>

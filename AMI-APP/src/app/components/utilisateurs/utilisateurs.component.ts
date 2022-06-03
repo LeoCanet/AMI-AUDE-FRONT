@@ -14,10 +14,11 @@ import { DialogComponent } from 'src/app/dialog/dialog.component';
 export class UtilisateursComponent implements OnInit {
   displayedColumns: string[] = [
     'id',
-    'Nom',
-    'Prenom',
-    'Email',
-    'Date_de_naissance',
+    'Referent_RSA',
+    'Date_debut',
+    'Date_fin',
+    'Usagers',
+    'Intitule_Action',
     'Actions',
   ];
   dataSource!: MatTableDataSource<any>;

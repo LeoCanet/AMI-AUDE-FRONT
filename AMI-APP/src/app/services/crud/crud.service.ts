@@ -39,6 +39,7 @@ export class CrudService {
   }
   // Update
   updateUser(id: any, data: any): Observable<any> {
+    console.log(data.Date_fin)
     let API_URL = `${this.REST_API}utilisateurs-update/${id}`;
     return this.httpClient
       .put(API_URL, data, { headers: this.httpHeaders })
