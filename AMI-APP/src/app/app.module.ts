@@ -11,6 +11,10 @@ import { DialogComponent } from './dialog/dialog.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { NavbarComponent } from './navbar/navbar.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { Enjeu2Component } from './enjeu2/enjeu2.component';
+import { DialogComponent2 } from './dialog-enjeu2/dialog2.component';
 
 const MY_FORMATS = {
   parse: {
@@ -29,6 +33,10 @@ const MY_FORMATS = {
     AppComponent,
     UtilisateursComponent,
     DialogComponent,
+    DialogComponent2,
+    NavbarComponent,
+    AccueilComponent,
+    Enjeu2Component,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +48,7 @@ const MY_FORMATS = {
     AngularMaterialModule,
     MatMomentDateModule,
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }, UtilisateursComponent, { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }, UtilisateursComponent, Enjeu2Component, { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Formulaire de l'utilisateur</h1>
+<form [formGroup]="users2Form">
+	<div mat-dialog-content>
+		<mat-form-field appearance="outline">
+			<mat-label>Referent_RSA</mat-label>
+			<input matInput type="text" placeholder="Referent RSA" formControlName="Referent_RSA" required>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Date_debut</mat-label>
+			<input matInput type="date" placeholder="Date de debut" formControlName="Date_debut" required>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Date_fin</mat-label>
+			<input matInput type="date" placeholder="Date de fin" formControlName="Date_fin" required>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Usagers</mat-label>
+			<input matInput type="text" placeholder="Usagers" formControlName="Usagers" required>
+		</mat-form-field>
+
+		<mat-form-field appearance="outline">
+			<mat-label>Intitule_Action</mat-label>
+			<input matInput type="text" placeholder="Intitule_Action" formControlName="Intitule_Action" required>
+		</mat-form-field>
+
+
+		<div mat-dialog-action [align]="'end'">
+			<button mat-raised-button color="warn" mat-dialog-close>Fermer</button>
+			<button mat-raised-button color="primary" (click)="onSubmit()">{{actionBtn}}</button>
+		</div>
+
+	</div>
+</form>

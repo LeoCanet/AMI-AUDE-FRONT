@@ -1,7 +1,7 @@
 .wrapper {
   width: 100%;
   display: flex;
-  justify-content: center;
+  margin-top: 2rem;
 }
 
 .mat-table {
@@ -9,15 +9,51 @@
 }
 
 .btn-add{
-  margin-top: 2rem;
-  margin-left: 2rem;
+  margin: 2rem 0 1rem 1rem;
+  padding-left: 11px;
+  padding-right: 11px;
+  font-size: 14px;
+  background-color: #c23f3d;
+  color: #fff;
 }
 
 table {
-  width: 80%;
+  width: 100%;
 }
 
 .mat-form-field {
   font-size: 14px;
+}
+
+.table-wrapper{
+  width: 75%;
+}
+
+.component-wrapper {
+  width: 83vw;
+  display: flex;
+  justify-content: center;
+}
+
+.list-wrapper{
   width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+
+}
+
+.list-table {
+  display: flex;
+  background-color: #c23f3d;
+  padding: 10px 10px 6px 10px;
+  border-radius: 4px;
+}
+
+.mid{
+  margin-left: 1.5rem;
+}
+
+.list-links {
+  font-size: 25px;
 }

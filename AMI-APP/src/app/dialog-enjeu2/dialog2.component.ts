@@ -2,36 +2,36 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CrudService } from '../services/crud/crud.service';
 import { UtilisateursComponent } from '../components/utilisateurs/utilisateurs.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Enjeu2Component } from '../enjeu2/enjeu2.component';
+import { Enjeu2Service } from '../services/enjeu_2/enjeu-2.service';
 
 @Component({
-  selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.scss'],
+  selector: 'app-dialog2',
+  templateUrl: './dialog2.component.html',
+  styleUrls: ['./dialog2.component.scss'],
   providers: [],
 })
-export class DialogComponent implements OnInit {
-  usersForm!: FormGroup;
+export class DialogComponent2 implements OnInit {
+  users2Form!: FormGroup;
   actionBtn: string = 'Sauvegarder';
   constructor(
     @Inject(MAT_DATE_LOCALE) private _locale: string,
     @Inject(MAT_DIALOG_DATA) public editData: any,
     private formBuilder: FormBuilder,
-    private crudService: CrudService,
+    private enjeu2Service: Enjeu2Service,
     private utilisateursComponent: UtilisateursComponent,
     private enjeu2Component: Enjeu2Component,
-    private dialogRef: MatDialogRef<DialogComponent>
+    private dialogRef: MatDialogRef<DialogComponent2>
   ) {
-    this.usersForm = this.formBuilder.group({
+    this.users2Form = this.formBuilder.group({
       users: this.formBuilder.array([]),
     });
   }
 
   initForm() {
-    this.usersForm = this.formBuilder.group({
+    this.users2Form = this.formBuilder.group({
       Referent_RSA: ['', Validators.required],
       Date_debut: ['', Validators.required],
       Date_fin: ['', Validators.required],
@@ -43,11 +43,11 @@ export class DialogComponent implements OnInit {
     if (this.editData) {
       console.log(this.editData)
       this.actionBtn = 'Mettre à jour';
-      this.usersForm.controls['Referent_RSA'].setValue(this.editData.Referent_RSA);
-      this.usersForm.controls['Date_debut'].setValue(this.editData.Date_debut);
-      this.usersForm.controls['Date_fin'].setValue(this.editData.Date_fin);
-      this.usersForm.controls['Usagers'].setValue(this.editData.Usagers);
-      this.usersForm.controls['Intitule_Action'].setValue(this.editData.Intitule_Action);
+      this.users2Form.controls['Referent_RSA'].setValue(this.editData.Referent_RSA);
+      this.users2Form.controls['Date_debut'].setValue(this.editData.Date_debut);
+      this.users2Form.controls['Date_fin'].setValue(this.editData.Date_fin);
+      this.users2Form.controls['Usagers'].setValue(this.editData.Usagers);
+      this.users2Form.controls['Intitule_Action'].setValue(this.editData.Intitule_Action);
     }
   }
 
@@ -59,10 +59,10 @@ export class DialogComponent implements OnInit {
     // Check form.value
     // console.log(this.usersForm.value);
     if (!this.editData) {
-      if (this.usersForm.valid) {
-        this.crudService.AddUser(this.usersForm.value).subscribe({
+      if (this.users2Form.valid) {
+        this.enjeu2Service.AddUser(this.users2Form.value).subscribe({
           next: (res) => {
-            this.usersForm.reset();
+            this.users2Form.reset();
             this.dialogRef.close('sauvegarder');
             alert("L'utilisateur à été ajouté avec succès!");
           },
@@ -77,11 +77,11 @@ export class DialogComponent implements OnInit {
   }
 
   updateUser() {
-    this.crudService
-      .updateUser(this.editData.id, this.usersForm.value)
+    this.enjeu2Service
+      .updateUser(this.editData.id, this.users2Form.value)
       .subscribe({
         next: (res) => {
-          this.usersForm.reset();
+          this.users2Form.reset();
           this.dialogRef.close('Mettre à jour');
           alert("L'utilisateur à été mise à jour avec succès'");
         },
